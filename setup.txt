@@ -1,0 +1,12 @@
+apt install python
+apt install python-pip
+
+pip install flask
+pip install docker
+
+ImportError: No module named ssl_match_hostname
+	sudo pip uninstall backports.ssl-match-hostname
+	sudo apt-get install python-backports.ssl-match-hostname
+
+
+pip install pathlib
