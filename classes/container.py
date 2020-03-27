@@ -1,8 +1,8 @@
 class Container:
-    def __init__(self, name, ctype="compose", envariables=[], path="", status=False):
+    def __init__(self, name, type, id="null", envariables=[], path="", status=False):
         self.name = name
-        #self.containerid = "test"
-        self.ctype = ctype
+        self.id = id
+        self.type = type
         self.envariables  = envariables
         self.path = path
         self.status = status
@@ -24,3 +24,13 @@ class Container:
         #client = docker.from_env()
         #return client.container.(self.containerid).logs()
         return "test"
+
+    def log_container_info(self):
+        print('container name = ' + self.name)
+        print('container type = ' + self.type)
+        print('container id = ' + self.id)
+        for var in self.envariables:
+            print('container env = ' + var)
+        print('container path = ' + self.path)
+        print('container status = ' + str(self.status))
+        print('\n')

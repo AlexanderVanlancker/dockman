@@ -2,11 +2,10 @@ from pathlib import Path
 import docker, glob
 
 client = docker.from_env()
+directory = "/Users/alexandervanlancker/Desktop/code/containers"
 
 def get_docker_files():
     dockerfile = []
-    directory = "/docker"
-    
     for path in Path(directory).rglob('Dockerfile'):
         s = str(path).rsplit('/', 1)[0]+"/docker-compose.yml"
         dockerfileOnly = True
@@ -21,7 +20,6 @@ def get_docker_files():
 
 def get_docker_compose_files():
     compose_yml = []
-    directory = "/docker"
 
     for path in Path(directory).rglob('docker-compose.yml'):
         compose_yml.append(path)
