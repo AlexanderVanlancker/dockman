@@ -11,14 +11,14 @@ containers = []
 def index():
     for container in containers:
         container.log_container_info()
-    return render_template('index.html')
+    return render_template('index.html', containers=containers)
 
 def init():
     for path in manager.get_docker_files():
         name = (str(path).rsplit('/', 1)[0]).rsplit('/', 1)[1]
         container = Container(name=name,type="dockerfile",path=str(path))
         containers.append(container)
-        
+
     for path in manager.get_docker_compose_files():
         name = (str(path).rsplit('/', 1)[0]).rsplit('/', 1)[1]
         container = Container(name=name,type="composefile",path=str(path))
@@ -40,4 +40,4 @@ if __name__ == '__main__':
 
 
 
-#FLASK_APP=app.py FLASK_ENV=development flask run
+#FLASK_APP=app.py FLASK_ENV=development TEMPLATES_AUTO_RELOAD=True flask run
